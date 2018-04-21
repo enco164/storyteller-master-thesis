@@ -1,5 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar>
-  <span>Storyteller</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="app-container mat-app-background">
+  <mat-toolbar color="primary">
+    <span>Storyteller</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="content-container">
+    <mat-sidenav mode="side" opened="true" class="sidenav">
+      <mat-list>
+        <mat-list-item routerLink="kids" routerLinkActive="active">
+          <mat-icon matListIcon>folder</mat-icon>
+          <span matLine>Kids</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

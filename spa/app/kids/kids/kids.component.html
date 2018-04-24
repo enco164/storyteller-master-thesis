@@ -1,3 +1,33 @@
-<p>
-  kids works!
-</p>
+<div class="container">
+
+  <div class="loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner [diameter]="32"></mat-spinner>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z1">
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef><button mat-button>Edit</button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <div class="add-button-container">
+    <button mat-fab><mat-icon>add</mat-icon></button>
+  </div>
+</div>

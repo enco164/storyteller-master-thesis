@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import {KidModel} from '../model/kid.model';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class KidService {
+export class KidEditService {
 
   constructor() { }
 

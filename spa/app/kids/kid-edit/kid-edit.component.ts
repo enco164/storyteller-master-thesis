@@ -8,7 +8,7 @@ import {KidModel} from '../model/kid.model';
 })
 export class KidEditComponent implements OnInit {
 
-  model: KidModel = {firstName: 'Uros', lastName: 'Milenkovic'};
+  model: KidModel = {id: 1, firstName: 'Uros', lastName: 'Milenkovic'};
 
   constructor() { }
 

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {KidsComponent} from './kids/kids.component';
-import {KidComponent} from './kid/kid.component';
+import {KidEditComponent} from './kid-edit/kid-edit.component';
 
 const routes: Routes = [
   {path: '', component: KidsComponent},
-  {path: ':id', component: KidComponent}
+  {path: ':id', component: KidEditComponent}
 ];
 
 @NgModule({

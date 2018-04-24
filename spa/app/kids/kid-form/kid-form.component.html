@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #kidForm>
+
+  <div>
+    <label>First Name</label>
+    <input type="text" [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
+  </div>
+
+  <div>
+    <label>Last Name</label>
+    <input type="text" [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
+  </div>
+  <div>
+    <button type="submit" mat-raised-button>Save</button>
+    <a routerLink=".." mat-button>BACK TO LIST</a>
+  </div>
+</form>

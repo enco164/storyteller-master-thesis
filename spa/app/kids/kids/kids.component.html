@@ -9,7 +9,7 @@
 
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef><button mat-button>Edit</button></mat-cell>
+      <mat-cell *matCellDef="let element"><a [routerLink]="element.id" mat-button>Edit</a></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="firstName">

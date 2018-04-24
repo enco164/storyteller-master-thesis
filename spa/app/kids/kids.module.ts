@@ -5,17 +5,22 @@ import { KidsRoutingModule } from './kids-routing.module';
 import { KidsComponent } from './kids/kids.component';
 import {MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
+import { KidComponent } from './kid/kid.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    KidsRoutingModule,
     CdkTableModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatButtonModule,
     MatIconModule,
+
+    FormsModule,
+
+    KidsRoutingModule,
   ],
-  declarations: [KidsComponent]
+  declarations: [KidsComponent, KidComponent]
 })
 export class KidsModule { }

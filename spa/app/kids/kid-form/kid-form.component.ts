@@ -14,7 +14,8 @@ export class KidFormComponent {
   @Output()
   submit = new EventEmitter<KidModel>();
 
-  onSubmit() {
+  onSubmit($event: Event) {
+    $event.preventDefault();
     this.submit.emit(this.model);
   }
 

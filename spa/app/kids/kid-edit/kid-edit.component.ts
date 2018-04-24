@@ -15,7 +15,7 @@ export class KidEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmit(kid) {
 
   }
 

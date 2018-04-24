@@ -14,6 +14,5 @@ export class KidsService {
 
 }
 
-const KIDS: KidModel[] = [
-  {id: 1, firstName: 'Uros', lastName: 'Milenkovic'},
-];
+const KIDS: KidModel[] = Array(50)
+  .fill({id: 1, firstName: 'Uros', lastName: 'Milenkovic'});

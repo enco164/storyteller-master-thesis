@@ -8,6 +8,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { KidEditComponent } from './kid-edit/kid-edit.component';
 import {FormsModule} from '@angular/forms';
 import { KidFormComponent } from './kid-form/kid-form.component';
+import { KidNewComponent } from './kid-new/kid-new.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { KidFormComponent } from './kid-form/kid-form.component';
 
     KidsRoutingModule,
   ],
-  declarations: [KidsComponent, KidEditComponent, KidFormComponent]
+  declarations: [KidsComponent, KidEditComponent, KidFormComponent, KidNewComponent]
 })
 export class KidsModule { }

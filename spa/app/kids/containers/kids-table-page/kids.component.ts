@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {KidsService} from './kids.service';
-import {Observable} from 'rxjs/Observable';
-import {KidModel} from '../model/kid.model';
+import {Component, OnInit} from '@angular/core';
+import {KidsService} from '../../services/kids.service';
 import {MatTableDataSource} from '@angular/material';
 
 import 'rxjs/add/operator/finally';

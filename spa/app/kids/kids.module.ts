@@ -2,13 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {KidsRoutingModule} from './kids-routing.module';
-import {KidsComponent} from './kids/kids.component';
+import {KidsComponent} from './containers/kids-table-page/kids.component';
 import {MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
-import {KidEditComponent} from './kid-edit/kid-edit.component';
+import {KidEditComponent} from './containers/kid-edit-page/kid-edit.component';
 import {FormsModule} from '@angular/forms';
-import {KidFormComponent} from './kid-form/kid-form.component';
-import {KidNewComponent} from './kid-new/kid-new.component';
+import {KidFormComponent} from './components/kid-form/kid-form.component';
+import {KidNewComponent} from './containers/kid-new-page/kid-new.component';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({

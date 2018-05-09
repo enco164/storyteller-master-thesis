@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {of} from 'rxjs/observable/of';
-import {KidModel} from '../model/kid.model';
+import {KidModel} from '../../models/kid.model';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

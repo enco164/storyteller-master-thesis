@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {KidModel} from '../model/kid.model';
+import {KidModel} from '../models/kid.model';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -8,7 +8,7 @@ import {resourceToKidMapper} from '../kid-resource.mappers';
 @Injectable()
 export class KidsService {
 
-  private url = '/api/kids';
+  private url = '/api/kids-table-page';
 
   constructor(private http: HttpClient) {
   }

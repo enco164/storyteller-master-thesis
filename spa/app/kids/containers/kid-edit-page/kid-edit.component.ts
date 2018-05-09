@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KidModel} from '../model/kid.model';
+import {KidModel} from '../../models/kid.model';
 
 @Component({
   selector: 'st-kid',

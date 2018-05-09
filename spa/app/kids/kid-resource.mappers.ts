@@ -1,4 +1,4 @@
-import {KidModel} from './model/kid.model';
+import {KidModel} from './models/kid.model';
 
 export const resourceToKidMapper = (kid): KidModel => ({
   id: kid.id,

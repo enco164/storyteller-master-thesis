@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { KidFormComponent } from './kid-form.component';
+import {KidFormComponent} from './kid-form.component';
 
 describe('KidFormComponent', () => {
   let component: KidFormComponent;

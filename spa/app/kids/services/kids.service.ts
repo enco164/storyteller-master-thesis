@@ -8,7 +8,7 @@ import {resourceToKidMapper} from '../kid-resource.mappers';
 @Injectable()
 export class KidsService {
 
-  private url = '/api/kids-table-page';
+  private url = '/api/kids';
 
   constructor(private http: HttpClient) {
   }

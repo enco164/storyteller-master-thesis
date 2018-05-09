@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import {of} from 'rxjs/observable/of';
+import {Injectable} from '@angular/core';
 import {KidModel} from '../model/kid.model';
 import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class KidsService {
 
-  constructor() { }
+  private url = '/api/kids';
+
+  constructor(private http: HttpClient) {
+  }
 
   getKids(): Observable<KidModel[]> {
-    return of(KIDS);
+    return this.http.get<KidModel[]>(this.url);
   }
 
 }
-
-const KIDS: KidModel[] = Array(50)
-  .fill({id: 1, firstName: 'Uros', lastName: 'Milenkovic'});

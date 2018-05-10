@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {KidFormComponent} from './components/kid-form/kid-form.component';
 import {KidNewComponent} from './containers/kid-new-page/kid-new.component';
 import {HttpClientModule} from '@angular/common/http';
+import {KidExistsGuard} from './guards/kid-exists.guard';
+import {KidsService} from './services/kids.service';
 
 @NgModule({
   imports: [
@@ -27,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
 
     KidsRoutingModule,
   ],
-  declarations: [KidsComponent, KidEditComponent, KidFormComponent, KidNewComponent]
+  declarations: [KidsComponent, KidEditComponent, KidFormComponent, KidNewComponent],
+  providers: [KidsService, KidExistsGuard]
 })
 export class KidsModule { }

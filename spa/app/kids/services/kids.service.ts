@@ -17,4 +17,8 @@ export class KidsService {
     return this.http.get<KidModel[]>(this.url).map(kids => kids.map(resourceToKidMapper));
   }
 
+  getKidById(id): Observable<KidModel> {
+    return this.http.get<KidModel>(`${this.url}/${id}`).map(kid => resourceToKidMapper(kid));
+  }
+
 }

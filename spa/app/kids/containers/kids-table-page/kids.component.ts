@@ -7,8 +7,7 @@ import 'rxjs/add/operator/finally';
 @Component({
   selector: 'st-kids',
   templateUrl: './kids.component.html',
-  styleUrls: ['./kids.component.scss'],
-  providers: [KidsService]
+  styleUrls: ['./kids.component.scss']
 })
 export class KidsComponent implements OnInit {
 

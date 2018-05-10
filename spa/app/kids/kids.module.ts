@@ -9,15 +9,12 @@ import {KidEditComponent} from './containers/kid-edit-page/kid-edit.component';
 import {FormsModule} from '@angular/forms';
 import {KidFormComponent} from './components/kid-form/kid-form.component';
 import {KidNewComponent} from './containers/kid-new-page/kid-new.component';
-import {HttpClientModule} from '@angular/common/http';
 import {KidExistsGuard} from './guards/kid-exists.guard';
-import {KidsService} from './services/kids.service';
+import {KidsResource} from './services/kids.resource';
 
 @NgModule({
   imports: [
     CommonModule,
-
-    HttpClientModule,
 
     CdkTableModule,
     MatTableModule,
@@ -30,6 +27,6 @@ import {KidsService} from './services/kids.service';
     KidsRoutingModule,
   ],
   declarations: [KidsComponent, KidEditComponent, KidFormComponent, KidNewComponent],
-  providers: [KidsService, KidExistsGuard]
+  providers: [KidsResource, KidExistsGuard]
 })
 export class KidsModule { }

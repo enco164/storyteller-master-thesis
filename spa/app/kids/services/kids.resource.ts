@@ -4,21 +4,21 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {resourceToKidMapper} from '../kid-resource.mappers';
+import {BaseResource} from '../../core/services/base-resource';
 
 @Injectable()
-export class KidsService {
+export class KidsResource extends BaseResource<KidModel> {
 
-  private url = '/api/kids';
-
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
+    super(http, '/api/kids');
   }
 
   getKids(): Observable<KidModel[]> {
-    return this.http.get<KidModel[]>(this.url).map(kids => kids.map(resourceToKidMapper));
+    return this.getAll().map(kids => kids.map(resourceToKidMapper));
   }
 
   getKidById(id): Observable<KidModel> {
-    return this.http.get<KidModel>(`${this.url}/${id}`).map(kid => resourceToKidMapper(kid));
+    return this.getKidById(id).map(kid => resourceToKidMapper(kid));
   }
 
 }

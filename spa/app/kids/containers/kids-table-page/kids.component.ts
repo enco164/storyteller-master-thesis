@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KidsService} from '../../services/kids.service';
+import {KidsResource} from '../../services/kids.resource';
 import {MatTableDataSource} from '@angular/material';
 
 import 'rxjs/add/operator/finally';
@@ -16,7 +16,8 @@ export class KidsComponent implements OnInit {
 
   isLoadingResults = true;
 
-  constructor(private service: KidsService) { }
+  constructor(private service: KidsResource) {
+  }
 
   ngOnInit() {
     this.isLoadingResults = true;

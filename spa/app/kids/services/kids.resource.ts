@@ -18,7 +18,7 @@ export class KidsResource extends BaseResource<KidModel> {
   }
 
   getKidById(id): Observable<KidModel> {
-    return this.getKidById(id).map(kid => resourceToKidMapper(kid));
+    return this.getById(id).map(kid => resourceToKidMapper(kid));
   }
 
 }

@@ -4,20 +4,34 @@ import {Observable} from 'rxjs/Observable';
 import {KidsResource} from '../services/kids.resource';
 import {catchError, map} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
+import {Store} from '@ngrx/store';
+import * as fromKids from '../store';
+import * as kidsActions from '../store/actions/kids-actions';
 
 @Injectable()
 export class KidExistsGuard implements CanActivate {
 
-  constructor(private kidService: KidsResource, private router: Router) {
+  constructor(private kidsResource: KidsResource, private router: Router, private store: Store<fromKids.State>) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.kidService.getKidById(route.params['id']).pipe(
-      map(kid => !!kid),
+  hasKidInApi(id: string): Observable<boolean> {
+    // this.store.dispatch(new kidsActions.Load(id));
+
+    return this.kidsResource.getKidById(id).pipe(
+      map(kidEntry => new kidsActions.LoadSuccess(kidEntry)),
+      map(kidInStore => !!kidInStore),
       catchError(() => {
         this.router.navigate(['/404']);
         return of(false);
       })
     );
+  }
+
+  hasKid(id: string): Observable<boolean> {
+    return this.hasKidInApi(id);
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.hasKid(route.params['id']);
   }
 }

@@ -1,0 +1,5 @@
+<st-kids-list [kids]="kids$ | async"
+              [isLoading]="isLoadingResults$ | async"
+              (edit)="editKid($event)"
+              (remove)="removeKid($event)"
+></st-kids-list>

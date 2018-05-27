@@ -1,3 +1,3 @@
 <div class="container">
-  <st-kid-form [model]="model" (submit)="onSubmit($event)"></st-kid-form>
+  <st-kid-form *ngIf="model$ | async" [model]="model$ | async" (save)="onSubmit($event)"></st-kid-form>
 </div>

@@ -8,6 +8,13 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CustomMaterialModule} from './custom-material.module';
 import {CoreModule} from './core/core.module';
+import {StoreModule} from '@ngrx/store';
+import {reducers} from './reducers/index';
+import {RouterStateSerializer} from '@ngrx/router-store';
+import {SharedModule} from './shared/shared.module';
+import {CustomRouterStateSerializer} from './shared/custom-router-state-serializer';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -19,10 +26,20 @@ import {CoreModule} from './core/core.module';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    SharedModule,
+
     CustomMaterialModule,
+
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+
+    StoreDevtoolsModule.instrument({maxAge: 50}),
+
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

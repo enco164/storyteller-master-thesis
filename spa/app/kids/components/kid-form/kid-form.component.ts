@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {KidModel} from '../../models/kid.model';
+import {KidModel} from '../../models/kid';
 
 @Component({
   selector: 'st-kid-form',
@@ -9,14 +9,13 @@ import {KidModel} from '../../models/kid.model';
 export class KidFormComponent {
 
   @Input()
-  model: KidModel;
+  model: KidModel = {id: undefined, firstName: '', lastName: ''};
 
   @Output()
-  submit = new EventEmitter<KidModel>();
+  save = new EventEmitter<KidModel>();
 
-  onSubmit($event: Event) {
-    $event.preventDefault();
-    this.submit.emit(this.model);
+  onSubmit() {
+    this.save.emit(this.model);
   }
 
 }

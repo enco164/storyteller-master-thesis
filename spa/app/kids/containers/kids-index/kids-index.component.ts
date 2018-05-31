@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
-import 'rxjs/add/operator/finally';
+
 
 import * as fromKids from '../../store';
 import {Store} from '@ngrx/store';
 import {KidModel} from '../../models/kid';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {Delete, LoadAll, SetCurrentKidId} from '../../store/actions/kids-actions';
 

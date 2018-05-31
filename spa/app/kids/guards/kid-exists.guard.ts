@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 import {KidsResource} from '../services/kids.resource';
 import {catchError, map} from 'rxjs/operators';
-import {of} from 'rxjs/observable/of';
 import {Store} from '@ngrx/store';
 import * as fromKids from '../store';
 import * as kidsActions from '../store/actions/kids-actions';

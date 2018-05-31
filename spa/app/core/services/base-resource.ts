@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 export abstract class BaseResource<T> {
   constructor(protected http: HttpClient, protected url: string) {

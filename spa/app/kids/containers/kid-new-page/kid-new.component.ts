@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {ActionsSubject, Store} from '@ngrx/store';
 import * as fromKids from '../../store';
 import {ofType} from '@ngrx/effects';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'st-kid-new',

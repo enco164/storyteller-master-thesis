@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {KidsResource} from '../../services/kids.resource';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 import {Action} from '@ngrx/store';
 import {
   Create,
@@ -22,7 +22,6 @@ import {
 } from '../actions/kids-actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {KidModel} from '../../models/kid';
-import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class KidsEffects {
@@ -33,6 +32,7 @@ export class KidsEffects {
     map((kids: KidModel[]) => new LoadAllSuccess(kids)),
     catchError((error) => of(new LoadAllFail(error)))
   );
+
   @Effect()
   load$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.LOAD),
@@ -41,6 +41,7 @@ export class KidsEffects {
     map((kid: KidModel) => new LoadSuccess(kid)),
     catchError((error) => of(new LoadFail(error)))
   );
+
   @Effect()
   create$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.CREATE),
@@ -49,6 +50,7 @@ export class KidsEffects {
     map((createdContact: KidModel) => new CreateSuccess(createdContact)),
     catchError(err => of(new CreateFail(err)))
   );
+
   @Effect()
   patch$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.PATCH),
@@ -60,6 +62,7 @@ export class KidsEffects {
     })),
     catchError((error => of(new PatchFail(error))))
   );
+
   @Effect()
   destroy$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.DELETE),

@@ -1,14 +1,68 @@
 <form (submit)="onSubmit()" #kidForm>
 
-  <div>
-    <label>First Name</label>
-    <input type="text" [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel">
-  </div>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.firstName"
+           matInput
+           placeholder="First Name"
+           name="firstName"
+           #firstName="ngModel">
+  </mat-form-field>
 
-  <div>
-    <label>Last Name</label>
-    <input type="text" [(ngModel)]="model.lastName" name="lastName" #lastName="ngModel">
-  </div>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.lastName"
+           matInput
+           placeholder="Last Name"
+           name="lastName"
+           #lastName="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker #dp
+                    startView="multi-year"
+                    (yearSelected)="chosenYearHandler($event)"
+                    (monthSelected)="chosenMonthHandler($event, dp)"
+                    panelClass="example-month-picker">
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.lastName"
+           matInput
+           placeholder="City of Birth"
+           name="lastName"
+           #lastName="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+
+    <input type="text"
+           [(ngModel)]="model.lastName"
+           matInput
+           placeholder="State of Birth"
+           name="lastName"
+           #lastName="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+
+    <input type="text"
+           [(ngModel)]="model.lastName"
+           matInput
+           placeholder="Mother's Education"
+           name="lastName"
+           #lastName="ngModel">
+  </mat-form-field>
+  <mat-form-field>
+
+    <input type="text"
+           [(ngModel)]="model.lastName"
+           matInput
+           placeholder="Father's Education"
+           name="lastName"
+           #lastName="ngModel">
+  </mat-form-field>
   <div>
     <button type="submit" mat-raised-button>Save</button>
     <a routerLink=".." mat-button>BACK TO LIST</a>

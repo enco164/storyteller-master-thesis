@@ -23,7 +23,9 @@
             "styles": [
               "spa/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/moment/min/moment.min.js"
+            ]
           },
           "configurations": {
             "production": {

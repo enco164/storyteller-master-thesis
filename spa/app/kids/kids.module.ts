@@ -3,7 +3,14 @@ import {CommonModule} from '@angular/common';
 
 import {KidsRoutingModule} from './kids-routing.module';
 import {KidsIndexComponent} from './containers/kids-index/kids-index.component';
-import {MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatTableModule} from '@angular/material';
+import {
+  DateAdapter, MAT_DATE_LOCALE,
+  MatButtonModule, MatDatepickerModule, MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatTableModule
+} from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 import {KidEditComponent} from './containers/kid-edit-page/kid-edit.component';
 import {FormsModule} from '@angular/forms';
@@ -16,6 +23,7 @@ import * as fromKids from './store';
 import {EffectsModule} from '@ngrx/effects';
 import {KidsListComponent} from './components/kids-list/kids-list.component';
 import {KidsEffects} from './store/effects/kids-effects';
+import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
@@ -27,6 +35,11 @@ import {KidsEffects} from './store/effects/kids-effects';
     MatButtonModule,
     MatIconModule,
 
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+
     FormsModule,
 
     StoreModule.forFeature('kids', fromKids.reducers),
@@ -35,6 +48,10 @@ import {KidsEffects} from './store/effects/kids-effects';
     KidsRoutingModule,
   ],
   declarations: [KidsIndexComponent, KidEditComponent, KidFormComponent, KidNewComponent, KidsListComponent],
-  providers: [KidsResource, KidExistsGuard]
+  providers: [
+    KidsResource,
+    KidExistsGuard,
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+  ]
 })
 export class KidsModule { }

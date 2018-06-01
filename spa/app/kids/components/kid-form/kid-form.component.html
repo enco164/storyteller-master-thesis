@@ -18,13 +18,12 @@
            #lastName="ngModel">
   </mat-form-field>
   <mat-form-field>
-    <input matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="date">
+    <input matInput [matDatepicker]="dp" placeholder="Year of Birth" name="yearOfBirth"
+           [(ngModel)]="model.yearOfBirth" #yearOfBirth="ngModel">
     <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
     <mat-datepicker #dp
                     startView="multi-year"
-                    (yearSelected)="chosenYearHandler($event)"
-                    (monthSelected)="chosenMonthHandler($event, dp)"
-                    panelClass="example-month-picker">
+                    (yearSelected)="chosenYearHandler($event, dp)">
     </mat-datepicker>
   </mat-form-field>
 

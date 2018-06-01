@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 
-export interface KidModel {
+export class KidModel {
   id: any;
   firstName: string;
   lastName: string;

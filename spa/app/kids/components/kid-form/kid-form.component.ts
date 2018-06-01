@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {KidModel} from '../../models/kid';
 import * as moment from 'moment';
+import {MatDatepicker} from '@angular/material';
 
 @Component({
   selector: 'st-kid-form',
@@ -10,22 +11,18 @@ import * as moment from 'moment';
 export class KidFormComponent implements OnInit {
 
   @Input()
-  model: KidModel = {
-    id: undefined,
-    firstName: '',
-    lastName: '',
-    yearOfBirth: moment(),
-    cityOfBirth: '',
-    stateOfBirth: '',
-    educationFather: '',
-    educationMother: ''
-  };
+  model: KidModel = new KidModel();
 
   @Output()
   save = new EventEmitter<KidModel>();
 
   ngOnInit(): void {
 
+  }
+
+  chosenYearHandler(normalizedYear: moment.Moment, datepicker: MatDatepicker<moment.Moment>) {
+    console.log(normalizedYear);
+    datepicker.close();
   }
 
   onSubmit() {

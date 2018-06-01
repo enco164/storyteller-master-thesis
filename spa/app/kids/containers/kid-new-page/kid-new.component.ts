@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs';
 })
 export class KidNewComponent implements OnInit, OnDestroy {
 
-  model: KidModel = {id: null, firstName: '', lastName: ''};
+  model: KidModel = new KidModel();
 
   private redirectSub: Subscription;
 

@@ -62,7 +62,9 @@ class KidController extends Controller
    */
   public function destroy(Kid $kid)
   {
-    $kid->delete();
+    if (!$kid->delete()) {
+      return response()->json(["error" => "Internal server error"], 500);
+    }
 
     return response()->json(null, 204);
   }

@@ -1,27 +1,39 @@
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {ChangeCase} from './change-case';
+import camelCase = ChangeCase.camelCase;
+import snakeCase = ChangeCase.snakeCase;
 
 export abstract class BaseResource<T> {
-  constructor(protected http: HttpClient, protected url: string) {
+  constructor(private http: HttpClient, private url: string) {
   }
 
-  getAll(): Observable<T[]> {
-    return this.http.get<T[]>(this.url);
+  protected getAll(): Observable<T[]> {
+    return this.http.get<T[]>(this.url).pipe(
+      map(camelCase)
+    );
   }
 
-  getById(id): Observable<T> {
-    return this.http.get<T>(`${this.url}/${id}`);
+  protected getById(id): Observable<T> {
+    return this.http.get<T>(`${this.url}/${id}`).pipe(
+      map(camelCase)
+    );
   }
 
-  create(entity): Observable<T> {
-    return this.http.post<T>(`${this.url}`, entity);
+  protected create(entity): Observable<T> {
+    return this.http.post<T>(`${this.url}`, snakeCase(entity)).pipe(
+      map(camelCase)
+    );
   }
 
-  update(entity): Observable<T> {
-    return this.http.put<T>(`${this.url}/${entity.id}`, entity);
+  protected update(entity): Observable<T> {
+    return this.http.put<T>(`${this.url}/${entity.id}`, snakeCase(entity)).pipe(
+      map(camelCase)
+    );
   }
 
-  destroy(entity): Observable<T> {
+  protected destroy(entity): Observable<T> {
     return this.http.delete<T>(`${this.url}/${entity.id}`);
   }
 }

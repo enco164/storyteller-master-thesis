@@ -19,7 +19,7 @@ export const getKidsRootState = createFeatureSelector<KidsState>('kids');
 
 export const getKidsState = createSelector(
   getKidsRootState,
-  state => state.kids
+  (state) => state.kids
 );
 
 export const getSelectedKidId = createSelector(

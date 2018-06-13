@@ -13,20 +13,11 @@ export class KidFormComponent implements OnInit {
   @Input()
   model: KidModel = new KidModel();
 
-  @Output()
-  save = new EventEmitter<KidModel>();
-
   ngOnInit(): void {
 
   }
 
   chosenYearHandler(normalizedYear: moment.Moment, datepicker: MatDatepicker<moment.Moment>) {
-    console.log(normalizedYear);
     datepicker.close();
   }
-
-  onSubmit() {
-    this.save.emit(this.model);
-  }
-
 }

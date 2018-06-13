@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
 import {KidModel} from '../models/kid';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-
-import {kidToResourceMapper, resourceToKidMapper} from '../kid-resource.mappers';
 import {BaseResource} from '../../core/services/base-resource';
 
 @Injectable()
@@ -15,19 +12,19 @@ export class KidsResource extends BaseResource<KidModel> {
   }
 
   getKids(): Observable<KidModel[]> {
-    return this.getAll().pipe(map(kids => kids.map(resourceToKidMapper)));
+    return this.getAll();
   }
 
   getKidById(id): Observable<KidModel> {
-    return this.getById(id).pipe(map(kid => resourceToKidMapper(kid)));
+    return this.getById(id);
   }
 
   updateKid(kid: KidModel): Observable<KidModel> {
-    return this.update(kidToResourceMapper(kid)).pipe(map(updatedKid => resourceToKidMapper(updatedKid)));
+    return this.update(kid);
   }
 
   createKid(kid: KidModel): Observable<KidModel> {
-    return this.create(kidToResourceMapper(kid)).pipe(map(createdKid => resourceToKidMapper(createdKid)));
+    return this.create(kid);
   }
 
   deleteKid(kid: KidModel): Observable<KidModel> {

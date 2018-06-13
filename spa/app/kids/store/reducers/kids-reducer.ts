@@ -43,7 +43,8 @@ export function reducer(state: State = INIT_STATE,
       return kidsAdapter.addAll(payload, {...state, loading: false});
     }
 
-    case KidsActionTypes.LOAD_SUCCESS || KidsActionTypes.CREATE_SUCCESS: {
+    case KidsActionTypes.LOAD_SUCCESS :
+    case KidsActionTypes.CREATE_SUCCESS: {
       return kidsAdapter.addOne(payload, {
         ...state,
         currentKidId: payload.id,

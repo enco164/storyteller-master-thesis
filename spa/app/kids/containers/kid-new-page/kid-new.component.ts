@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {KidModel} from '../../models/kid';
 import {Create, CreateSuccess, KidsActionTypes} from '../../store/actions/kids-actions';
 import {Router} from '@angular/router';
@@ -6,6 +6,7 @@ import {ActionsSubject, Store} from '@ngrx/store';
 import * as fromKids from '../../store';
 import {ofType} from '@ngrx/effects';
 import {Subscription} from 'rxjs';
+import {KidFormComponent} from '../../components/kid-form/kid-form.component';
 
 @Component({
   selector: 'st-kid-new',
@@ -14,13 +15,16 @@ import {Subscription} from 'rxjs';
 })
 export class KidNewComponent implements OnInit, OnDestroy {
 
+  @ViewChild('kidForm')
+  kidForm: KidFormComponent;
+
   model: KidModel = new KidModel();
 
   private redirectSub: Subscription;
 
   constructor(private store: Store<fromKids.State>,
               private actionsSubject: ActionsSubject,
-              private router: Router,) {
+              private router: Router) {
   }
 
   ngOnInit() {

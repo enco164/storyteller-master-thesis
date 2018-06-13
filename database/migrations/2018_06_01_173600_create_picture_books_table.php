@@ -16,9 +16,9 @@ class CreatePictureBooksTable extends Migration
     Schema::create('picture_books', function (Blueprint $table) {
       $table->increments('id');
       $table->string('title');
-      $table->string('authors');
-      $table->string('publisher');
-      $table->string('year_of_publishing');
+      $table->string('authors')->nullable();
+      $table->string('publisher')->nullable();
+      $table->string('year_of_publishing')->nullable();
       $table->timestamps();
     });
   }

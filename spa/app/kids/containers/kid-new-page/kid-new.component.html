@@ -1,3 +1,5 @@
 <div class="container">
-  <st-kid-form (save)="onSubmit($event)"></st-kid-form>
+  <st-kid-form #kidForm></st-kid-form>
+  <button mat-raised-button (click)="onSubmit()">Save</button>
+  <a routerLink=".." mat-button>BACK TO LIST</a>
 </div>

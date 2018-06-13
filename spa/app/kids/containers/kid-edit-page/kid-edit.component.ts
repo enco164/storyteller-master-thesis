@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {KidModel} from '../../models/kid';
 import {Observable, Subscription} from 'rxjs';
 import {ActionsSubject, Store} from '@ngrx/store';
@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {KidsActionTypes, Load, Patch, PatchSuccess} from '../../store/actions/kids-actions';
 import {ofType} from '@ngrx/effects';
 import {filter} from 'rxjs/operators';
+import {KidFormComponent} from '../../components/kid-form/kid-form.component';
 
 @Component({
   selector: 'st-kid',
@@ -15,6 +16,9 @@ import {filter} from 'rxjs/operators';
 })
 export class KidEditComponent implements OnInit, OnDestroy {
 
+  @ViewChild('kidForm')
+  kidForm: KidFormComponent;
+
   model$: Observable<KidModel>;
 
   private redirectSub: Subscription;
@@ -22,7 +26,7 @@ export class KidEditComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromKids.State>,
               private activatedRoute: ActivatedRoute,
               private actionsSubject: ActionsSubject,
-              private router: Router,) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -47,8 +51,7 @@ export class KidEditComponent implements OnInit, OnDestroy {
     this.redirectSub.unsubscribe();
   }
 
-  onSubmit(kid: KidModel) {
-    this.store.dispatch(new Patch(kid));
+  onSubmit() {
+    this.store.dispatch(new Patch(this.kidForm.model));
   }
-
 }

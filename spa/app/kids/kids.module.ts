@@ -24,21 +24,13 @@ import {EffectsModule} from '@ngrx/effects';
 import {KidsListComponent} from './components/kids-list/kids-list.component';
 import {KidsEffects} from './store/effects/kids-effects';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {CustomMaterialModule} from '../custom-material.module';
 
 @NgModule({
   imports: [
     CommonModule,
 
-    CdkTableModule,
-    MatTableModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    MatIconModule,
-
-    MatDatepickerModule,
-    MatMomentDateModule,
-    MatFormFieldModule,
-    MatInputModule,
+    CustomMaterialModule,
 
     FormsModule,
 

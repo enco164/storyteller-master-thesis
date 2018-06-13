@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 
-
 import * as fromKids from '../../store';
 import {Store} from '@ngrx/store';
 import {KidModel} from '../../models/kid';
@@ -22,13 +21,12 @@ export class KidsIndexComponent implements OnInit {
   kids$: Observable<KidModel[]>;
 
   constructor(private store: Store<fromKids.State>, private router: Router) {
-
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadAll());
     this.kids$ = this.store.select(fromKids.getAllKids);
     this.isLoadingResults$ = this.store.select(fromKids.getKidsLoading);
+    this.store.dispatch(new LoadAll());
   }
 
   editKid(kid: KidModel) {

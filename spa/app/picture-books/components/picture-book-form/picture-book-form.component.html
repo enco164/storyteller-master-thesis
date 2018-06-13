@@ -1,0 +1,38 @@
+<form (submit)="onSubmit()" #pictureBookForm>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.title"
+           matInput
+           placeholder="Title"
+           name="title"
+           #title="ngModel"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.publisher"
+           matInput
+           placeholder="Publisher"
+           name="publisher"
+           #publisher="ngModel"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.authors"
+           matInput
+           placeholder="Authors"
+           name="authors"
+           #authors="ngModel"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input type="text"
+           [(ngModel)]="model.yearOfPublishing"
+           matInput
+           placeholder="Year Of Publishing"
+           name="yearOfPublishing"
+           #yearOfPublishing="ngModel"
+    >
+  </mat-form-field>
+</form>

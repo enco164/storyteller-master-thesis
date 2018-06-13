@@ -1,0 +1,4 @@
+<st-picture-book-form
+    *ngIf="model$ | async"
+    [model]="model$ | async" #pictureBookForm></st-picture-book-form>
+<button mat-raised-button (click)="onSubmit()">Save</button>

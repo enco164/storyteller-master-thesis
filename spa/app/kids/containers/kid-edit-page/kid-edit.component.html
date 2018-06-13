@@ -1,3 +1,5 @@
 <div class="container">
-  <st-kid-form *ngIf="model$ | async" [model]="model$ | async" (save)="onSubmit($event)"></st-kid-form>
+  <st-kid-form *ngIf="model$ | async" [model]="model$ | async" #kidForm></st-kid-form>
+  <button mat-raised-button (click)="onSubmit()">Save</button>
+  <a routerLink="../.." mat-button>BACK TO LIST</a>
 </div>

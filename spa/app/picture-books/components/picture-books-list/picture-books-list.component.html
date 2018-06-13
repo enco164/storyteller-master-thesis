@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="loading-shade"
+       *ngIf="isLoading">
+    <mat-spinner [diameter]="32"></mat-spinner>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z1">
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let pictureBook">
+        <button (click)="editPictureBook(pictureBook)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="removePictureBook(pictureBook)" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+      <mat-cell *matCellDef="let pictureBook"> {{pictureBook.title}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="authors">
+      <mat-header-cell *matHeaderCellDef>authors</mat-header-cell>
+      <mat-cell *matCellDef="let pictureBook"> {{pictureBook.authors}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publisher">
+      <mat-header-cell *matHeaderCellDef>Publisher</mat-header-cell>
+      <mat-cell *matCellDef="let pictureBook"> {{pictureBook.publisher}}</mat-cell>
+    </ng-container>\
+
+    <ng-container matColumnDef="yearOfPublishing">
+      <mat-header-cell *matHeaderCellDef>Year Of Publishing</mat-header-cell>
+      <mat-cell *matCellDef="let pictureBook"> {{pictureBook.yearOfPublishing}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+</div>

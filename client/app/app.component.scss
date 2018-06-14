@@ -1,0 +1,34 @@
+:host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.app-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  flex: 1 1;
+}
+
+.sidenav {
+  padding: 0;
+  width: 200px;
+
+  [routerLink] {
+    cursor: pointer;
+
+    &.active {
+
+    }
+  }
+}
+
+.sidenav-content {
+  padding: 43px 29px;
+}

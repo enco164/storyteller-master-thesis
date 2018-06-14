@@ -9,7 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CustomMaterialModule} from './custom-material.module';
 import {CoreModule} from './core/core.module';
 import {StoreModule} from '@ngrx/store';
-import {reducers} from './reducers/index';
+import {reducers} from './reducers';
 import {RouterStateSerializer} from '@ngrx/router-store';
 import {SharedModule} from './shared/shared.module';
 import {CustomRouterStateSerializer} from './shared/custom-router-state-serializer';
@@ -42,4 +42,5 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

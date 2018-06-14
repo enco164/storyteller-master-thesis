@@ -8,10 +8,21 @@ import {PictureBook} from '../../models/picture-book.model';
 })
 export class PictureBookFormComponent implements OnInit {
 
+  private _model: PictureBook;
+
   @Input()
-  model = new PictureBook();
+  set model(m: PictureBook) {
+    this._model = {...m};
+  }
+
+  get model() {
+    return this._model;
+  }
 
   ngOnInit() {
+    if (!this._model) {
+      this._model = new PictureBook();
+    }
   }
 
 }

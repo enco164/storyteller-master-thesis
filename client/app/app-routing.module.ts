@@ -6,6 +6,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'kids', pathMatch: 'full'},
   {path: 'kids', loadChildren: 'app/kids/kids.module#KidsModule'},
   {path: 'picture-books', loadChildren: 'app/picture-books/picture-books.module#PictureBooksModule'},
+  {path: 'media', loadChildren: 'app/media/media.module#MediaModule'},
   {path: '**', component: NotFoundComponent},
 ];
 

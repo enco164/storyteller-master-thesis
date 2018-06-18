@@ -123,12 +123,15 @@
   },
   "defaultProject": "storyteller",
   "schematics": {
-    "@schematics/angular:component": {
+    "@ngrx/schematics:component": {
       "prefix": "st",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "st"
     }
+  },
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
   }
 }

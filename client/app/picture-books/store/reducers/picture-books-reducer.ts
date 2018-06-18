@@ -1,6 +1,7 @@
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 import {PictureBook} from '../../models/picture-book.model';
 import {AllPictureBooksActions, PictureBooksActionTypes} from '../actions/picture-books-actions';
+import {KidsActionTypes} from '../../../kids/store/actions/kids-actions';
 
 export interface State extends EntityState<PictureBook> {
   loading: boolean;
@@ -23,6 +24,17 @@ export const INIT_STATE: State = pictureBooksAdapter.getInitialState({
 export function reducer(state: State = INIT_STATE,
                         {type, payload}: AllPictureBooksActions) {
   switch (type) {
+    case PictureBooksActionTypes.LOAD_ALL_FAIL:
+    case PictureBooksActionTypes.LOAD_FAIL:
+    case PictureBooksActionTypes.CREATE_FAIL:
+    case PictureBooksActionTypes.PATCH_FAIL:
+    case PictureBooksActionTypes.DELETE_FAIL: {
+      return {
+        ...state,
+        loading: false
+      };
+    }
+
     case PictureBooksActionTypes.SET_CURRENT_PICTURE_BOOK_ID: {
       return {
         ...state,

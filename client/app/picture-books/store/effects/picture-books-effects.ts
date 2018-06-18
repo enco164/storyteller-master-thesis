@@ -25,39 +25,50 @@ import {PictureBooksResource} from '../../services/picture-books.resource';
 
 @Injectable()
 export class PictureBooksEffects {
+
+  constructor(private actions$: Actions, private resource: PictureBooksResource) {
+  }
+
   @Effect()
   loadAll$: Observable<Action> = this.actions$.pipe(
     ofType(PictureBooksActionTypes.LOAD_ALL),
-    switchMap(() => this.resource.getPictureBooks()),
-    map((pictureBooks: PictureBook[]) => new LoadAllSuccess(pictureBooks)),
-    catchError((err => of(new LoadAllFail(err))))
+    switchMap(() => this.resource.getPictureBooks().pipe(
+      map((pictureBooks: PictureBook[]) => new LoadAllSuccess(pictureBooks)),
+      catchError((err => of(new LoadAllFail(err))))
+    ))
   );
+
   @Effect()
   create$: Observable<Action> = this.actions$.pipe(
     ofType(PictureBooksActionTypes.CREATE),
     map((action: Create) => action.payload),
-    switchMap((pictureBook: PictureBook) => this.resource.createPictureBook(pictureBook)),
-    map((pictureBook: PictureBook) => new CreateSuccess(pictureBook)),
-    catchError((err) => of(new CreateFail(err)))
+    switchMap((pictureBook: PictureBook) => this.resource.createPictureBook(pictureBook).pipe(
+      map((pictureBook: PictureBook) => new CreateSuccess(pictureBook)),
+      catchError((err) => of(new CreateFail(err)))
+    ))
   );
+
   @Effect()
   load$: Observable<Action> = this.actions$.pipe(
     ofType(PictureBooksActionTypes.LOAD),
     map((action: Load) => action.payload),
-    switchMap((id) => this.resource.loadPictureBookById(id)),
-    map(pictureBook => new LoadSuccess(pictureBook)),
-    catchError(err => of(new LoadFail(err)))
+    switchMap((id) => this.resource.loadPictureBookById(id).pipe(
+      map(pictureBook => new LoadSuccess(pictureBook)),
+      catchError(err => of(new LoadFail(err)))
+    ))
   );
+
   @Effect()
   patch$: Observable<Action> = (this.actions$).pipe(
     ofType(PictureBooksActionTypes.PATCH),
     map((action: Patch) => action.payload),
-    switchMap((pictureBook: PictureBook) => this.resource.patchPictureBook(pictureBook)),
-    map((pictureBook: PictureBook) => new PatchSuccess({
-      id: pictureBook.id,
-      changes: pictureBook
-    })),
-    catchError((err) => of(new PatchFail(err)))
+    switchMap((pictureBook: PictureBook) => this.resource.patchPictureBook(pictureBook).pipe(
+      map((pictureBook: PictureBook) => new PatchSuccess({
+        id: pictureBook.id,
+        changes: pictureBook
+      })),
+      catchError((err) => of(new PatchFail(err)))
+    ))
   );
   @Effect()
   destroy$: Observable<Action> = this.actions$.pipe(
@@ -68,7 +79,4 @@ export class PictureBooksEffects {
       catchError((err) => of(new DeleteFail(err)))
     ))
   );
-
-  constructor(private actions$: Actions, private resource: PictureBooksResource) {
-  }
 }

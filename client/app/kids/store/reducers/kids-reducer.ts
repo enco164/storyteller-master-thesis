@@ -21,6 +21,17 @@ export function reducer(state: State = INIT_STATE,
                         {type, payload}: AllKidsActions): State {
   switch (type) {
 
+    case KidsActionTypes.LOAD_ALL_FAIL:
+    case KidsActionTypes.LOAD_FAIL:
+    case KidsActionTypes.CREATE_FAIL:
+    case KidsActionTypes.PATCH_FAIL:
+    case KidsActionTypes.DELETE_FAIL: {
+      return {
+        ...state,
+        loading: false
+      };
+    }
+
     case KidsActionTypes.SET_CURRENT_KID_ID: {
       return {
         ...state,

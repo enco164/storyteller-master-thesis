@@ -7,9 +7,7 @@ import {PictureBookEditComponent} from './containers/picture-book-edit/picture-b
 const routes: Routes = [
   {path: '', component: PictureBooksIndexComponent},
   {path: 'new', component: PictureBookNewComponent},
-  {
-    path: ':id/edit', component: PictureBookEditComponent,
-  }
+  {path: ':id/edit', component: PictureBookEditComponent}
 ];
 
 @NgModule({

@@ -24,12 +24,12 @@ export const {
 
 export const getPictureBooksLoading = createSelector(
   getPictureBooksState,
-  fromPictureBooks.getLoading
+  state => state.loading
 );
 
 export const getSelectedPictureBookId = createSelector(
   getPictureBooksState,
-  fromPictureBooks.getCurrentPictureBookId
+  state => state.currentPictureBookId
 );
 
 export const getCurrentPictureBook = createSelector(

@@ -1,0 +1,13 @@
+<pre>
+  isLoading: {{isLoadingResults$ | async | json}}
+</pre>
+<table>
+  <tr *ngFor="let session of sessions$ | async">
+    <td>
+      <button (click)="editSession(session)">Edit</button>
+      <button (click)="deleteSession(session)">Delete</button>
+    </td>
+    <td>{{session.kid.firstName + ' ' +session.kid.lastName}}</td>
+    <td>{{session.pictureBook.title}}</td>
+  </tr>
+</table>

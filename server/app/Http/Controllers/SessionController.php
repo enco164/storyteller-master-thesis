@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\PictureBook;
+use App\Session;
 use Illuminate\Http\Request;
 
-class PictureBookController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return PictureBook[]|\Illuminate\Database\Eloquent\Collection
+     * @return Session[]|\Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
-        return PictureBook::all();
+        return Session::with(['pictureBook', 'kid'])->get();
     }
 
     /**
@@ -25,48 +25,48 @@ class PictureBookController extends Controller
      */
     public function store(Request $request)
     {
-        $pictureBook = PictureBook::create($request->all());
+        $session = Session::create($request->all());
 
-        return response()->json($pictureBook, 201);
+        return response()->json($session, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\PictureBook $pictureBook
-     * @return PictureBook
+     * @param  \App\Session  $session
+     * @return Session
      */
-    public function show(PictureBook $pictureBook)
+    public function show(Session $session)
     {
-        return $pictureBook;
+        return $session;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\PictureBook $pictureBook
+     * @param  \App\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PictureBook $pictureBook)
+    public function update(Request $request, Session $session)
     {
-        $pictureBook->update($request->all());
-        return response()->json($pictureBook, 200);
+        $session->update($request->all());
+        return response()->json($session, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PictureBook $pictureBook
+     * @param  \App\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PictureBook $pictureBook)
+    public function destroy(Session $session)
     {
         try {
-            $pictureBook->delete();
+            $session->delete();
             return response()->json(null, 204);
         } catch (\Exception $e) {
-            return response()->json(["error" => "Internal server error"], 500);
+            return response()->json(["error" => "Internal server error: " . $e->getMessage()], 500);
         }
 
     }

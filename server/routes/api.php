@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('kids', 'KidController');
 Route::resource('picture-books', 'PictureBookController');
+Route::resource('sessions', 'SessionController');

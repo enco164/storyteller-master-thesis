@@ -1,7 +1,6 @@
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 import {PictureBook} from '../../models/picture-book.model';
 import {AllPictureBooksActions, PictureBooksActionTypes} from '../actions/picture-books-actions';
-import {KidsActionTypes} from '../../../kids/store/actions/kids-actions';
 
 export interface State extends EntityState<PictureBook> {
   loading: boolean;
@@ -12,9 +11,6 @@ export const pictureBooksAdapter = createEntityAdapter<PictureBook>({
   selectId: (pictureBook: PictureBook) => pictureBook.id,
   sortComparer: false
 });
-
-export const getLoading = (state: State) => state.loading;
-export const getCurrentPictureBookId = (state: State) => state.currentPictureBookId;
 
 export const INIT_STATE: State = pictureBooksAdapter.getInitialState({
   loading: false,
@@ -29,17 +25,11 @@ export function reducer(state: State = INIT_STATE,
     case PictureBooksActionTypes.CREATE_FAIL:
     case PictureBooksActionTypes.PATCH_FAIL:
     case PictureBooksActionTypes.DELETE_FAIL: {
-      return {
-        ...state,
-        loading: false
-      };
+      return {...state, loading: false};
     }
 
     case PictureBooksActionTypes.SET_CURRENT_PICTURE_BOOK_ID: {
-      return {
-        ...state,
-        currentPictureBookId: payload
-      };
+      return {...state, currentPictureBookId: payload};
     }
 
     case PictureBooksActionTypes.LOAD_ALL:

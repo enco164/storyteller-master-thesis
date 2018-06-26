@@ -34,7 +34,7 @@ export class PictureBooksEffects {
     ofType(PictureBooksActionTypes.LOAD_ALL),
     switchMap(() => this.resource.getPictureBooks().pipe(
       map((pictureBooks: PictureBook[]) => new LoadAllSuccess(pictureBooks)),
-      catchError((err => of(new LoadAllFail(err))))
+      catchError(err => of(new LoadAllFail(err)))
     ))
   );
 
@@ -43,7 +43,7 @@ export class PictureBooksEffects {
     ofType(PictureBooksActionTypes.CREATE),
     map((action: Create) => action.payload),
     switchMap((pictureBook: PictureBook) => this.resource.createPictureBook(pictureBook).pipe(
-      map((pictureBook: PictureBook) => new CreateSuccess(pictureBook)),
+      map((createdPictureBook: PictureBook) => new CreateSuccess(createdPictureBook)),
       catchError((err) => of(new CreateFail(err)))
     ))
   );
@@ -63,9 +63,9 @@ export class PictureBooksEffects {
     ofType(PictureBooksActionTypes.PATCH),
     map((action: Patch) => action.payload),
     switchMap((pictureBook: PictureBook) => this.resource.patchPictureBook(pictureBook).pipe(
-      map((pictureBook: PictureBook) => new PatchSuccess({
-        id: pictureBook.id,
-        changes: pictureBook
+      map((updatedPictureBook: PictureBook) => new PatchSuccess({
+        id: updatedPictureBook.id,
+        changes: updatedPictureBook
       })),
       catchError((err) => of(new PatchFail(err)))
     ))

@@ -1,14 +1,14 @@
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
-import {KidModel} from '../../models/kid';
+import {Kid} from '../../models/kid.model';
 import {AllKidsActions, KidsActionTypes} from '../actions/kids-actions';
 
-export interface State extends EntityState<KidModel> {
+export interface State extends EntityState<Kid> {
   loading: boolean;
   currentKidId?: any;
 }
 
-export const kidsAdapter = createEntityAdapter<KidModel>({
-  selectId: (kid: KidModel) => kid.id,
+export const kidsAdapter = createEntityAdapter<Kid>({
+  selectId: (kid: Kid) => kid.id,
   sortComparer: false
 });
 
@@ -21,33 +21,24 @@ export function reducer(state: State = INIT_STATE,
                         {type, payload}: AllKidsActions): State {
   switch (type) {
 
-    case KidsActionTypes.LOAD_ALL_FAIL:
-    case KidsActionTypes.LOAD_FAIL:
-    case KidsActionTypes.CREATE_FAIL:
-    case KidsActionTypes.PATCH_FAIL:
-    case KidsActionTypes.DELETE_FAIL: {
-      return {
-        ...state,
-        loading: false
-      };
-    }
-
-    case KidsActionTypes.SET_CURRENT_KID_ID: {
-      return {
-        ...state,
-        currentKidId: payload
-      };
-    }
-
     case KidsActionTypes.LOAD:
     case KidsActionTypes.LOAD_ALL:
     case KidsActionTypes.CREATE:
     case KidsActionTypes.PATCH:
     case KidsActionTypes.DELETE: {
-      return {
-        ...state,
-        loading: true
-      };
+      return {...state, loading: true};
+    }
+
+    case KidsActionTypes.LOAD_ALL_FAIL:
+    case KidsActionTypes.LOAD_FAIL:
+    case KidsActionTypes.CREATE_FAIL:
+    case KidsActionTypes.PATCH_FAIL:
+    case KidsActionTypes.DELETE_FAIL: {
+      return {...state, loading: false};
+    }
+
+    case KidsActionTypes.SET_CURRENT_KID_ID: {
+      return {...state, currentKidId: payload};
     }
 
     case KidsActionTypes.LOAD_ALL_SUCCESS : {
@@ -56,11 +47,7 @@ export function reducer(state: State = INIT_STATE,
 
     case KidsActionTypes.LOAD_SUCCESS :
     case KidsActionTypes.CREATE_SUCCESS: {
-      return kidsAdapter.addOne(payload, {
-        ...state,
-        currentKidId: payload.id,
-        loading: false,
-      });
+      return kidsAdapter.addOne(payload, {...state, currentKidId: payload.id, loading: false});
     }
 
     case KidsActionTypes.PATCH_SUCCESS: {

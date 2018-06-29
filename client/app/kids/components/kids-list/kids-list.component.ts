@@ -1,19 +1,21 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {KidModel} from '../../models/kid';
+import {Kid} from '../../models/kid.model';
 import {MatTableDataSource} from '@angular/material';
+import {Animations} from '../../../core/animations';
 
 @Component({
   selector: 'st-kids-list',
   templateUrl: './kids-list.component.html',
   styleUrls: ['./kids-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [Animations.fadeOut]
 })
 export class KidsListComponent implements OnInit, OnChanges {
 
-  @Input() kids: KidModel[];
+  @Input() kids: Kid[];
   @Input() isLoading: boolean;
-  @Output() edit = new EventEmitter<KidModel>();
-  @Output() remove = new EventEmitter<KidModel>();
+  @Output() edit = new EventEmitter<Kid>();
+  @Output() remove = new EventEmitter<Kid>();
 
   displayedColumns = ['actions', 'firstName', 'lastName'];
   dataSource = new MatTableDataSource();
@@ -31,11 +33,11 @@ export class KidsListComponent implements OnInit, OnChanges {
   }
 
 
-  editKid(kid: KidModel) {
+  editKid(kid: Kid) {
     this.edit.emit(kid);
   }
 
-  deleteKid(kid: KidModel) {
+  deleteKid(kid: Kid) {
     this.remove.emit(kid);
   }
 

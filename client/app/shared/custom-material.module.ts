@@ -13,6 +13,7 @@ import {
 import {NgModule} from '@angular/core';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import {CdkTableModule} from '@angular/cdk/table';
+import {MatSelectModule} from '@angular/material/select';
 
 const COMPONENTS = [
   MatToolbarModule,
@@ -27,12 +28,12 @@ const COMPONENTS = [
   MatTableModule,
   MatProgressSpinnerModule,
   MatButtonModule,
+  MatSelectModule,
 
   MatDatepickerModule,
 ];
 
 @NgModule({
-  imports: COMPONENTS,
   exports: COMPONENTS,
 })
 export class CustomMaterialModule {

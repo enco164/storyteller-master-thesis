@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 import * as fromKids from '../../store';
 import {Store} from '@ngrx/store';
-import {KidModel} from '../../models/kid';
+import {Kid} from '../../models/kid.model';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {Delete, LoadAll, SetCurrentKidId} from '../../store/actions/kids-actions';
@@ -18,7 +18,7 @@ export class KidsIndexComponent implements OnInit {
 
   isLoadingResults$;
 
-  kids$: Observable<KidModel[]>;
+  kids$: Observable<Kid[]>;
 
   constructor(private store: Store<fromKids.State>, private router: Router) {
   }
@@ -29,12 +29,12 @@ export class KidsIndexComponent implements OnInit {
     this.store.dispatch(new LoadAll());
   }
 
-  editKid(kid: KidModel) {
+  editKid(kid: Kid) {
     this.store.dispatch(new SetCurrentKidId(kid.id));
     this.router.navigate(['/kids', kid.id, 'edit']);
   }
 
-  removeKid(kid: KidModel) {
+  removeKid(kid: Kid) {
     const r = confirm(`Are you sure you want to remove ${kid.firstName} ${kid.lastName}?`);
     if (r) {
       this.store.dispatch(new Delete(kid));

@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
 import * as fromPictureBooks from '../../store';
 import {Delete, LoadAll, SetCurrentPictureBookId} from '../../store/actions/picture-books-actions';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {PictureBook} from '../../models/picture-book.model';
 
 

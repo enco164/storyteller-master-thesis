@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {KidModel} from '../../models/kid';
+import {Kid} from '../../models/kid.model';
 import {Create, CreateSuccess, KidsActionTypes} from '../../store/actions/kids-actions';
 import {Router} from '@angular/router';
 import {ActionsSubject, Store} from '@ngrx/store';
@@ -7,6 +7,7 @@ import * as fromKids from '../../store';
 import {ofType} from '@ngrx/effects';
 import {Subscription} from 'rxjs';
 import {KidFormComponent} from '../../components/kid-form/kid-form.component';
+import {KidFormsService} from '../../services/kid-forms.service';
 
 @Component({
   selector: 'st-kid-new',
@@ -18,13 +19,14 @@ export class KidNewComponent implements OnInit, OnDestroy {
   @ViewChild('kidForm')
   kidForm: KidFormComponent;
 
-  model: KidModel = new KidModel();
+  model: Kid = new Kid();
 
   private redirectSub: Subscription;
 
   constructor(private store: Store<fromKids.State>,
               private actionsSubject: ActionsSubject,
-              private router: Router) {
+              private router: Router,
+              private kidFormsService: KidFormsService) {
   }
 
   ngOnInit() {
@@ -39,7 +41,8 @@ export class KidNewComponent implements OnInit, OnDestroy {
     this.redirectSub.unsubscribe();
   }
 
-  onSubmit(kid) {
-    this.store.dispatch(new Create(kid));
+  onSubmit() {
+    const kidFromKidHolder = this.kidFormsService.getKidFromKidHolder(this.kidForm.model);
+    this.store.dispatch(new Create(kidFromKidHolder));
   }
 }

@@ -1,33 +1,33 @@
 import {Injectable} from '@angular/core';
-import {KidModel} from '../models/kid';
+import {Kid} from '../models/kid.model';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {BaseResource} from '../../core/services/base-resource';
 
 @Injectable()
-export class KidsResource extends BaseResource<KidModel> {
+export class KidsResource extends BaseResource<Kid> {
 
   constructor(http: HttpClient) {
     super(http, '/api/kids');
   }
 
-  getKids(): Observable<KidModel[]> {
+  getKids(): Observable<Kid[]> {
     return this.getAll();
   }
 
-  getKidById(id): Observable<KidModel> {
+  getKidById(id): Observable<Kid> {
     return this.getById(id);
   }
 
-  updateKid(kid: KidModel): Observable<KidModel> {
+  updateKid(kid: Kid): Observable<Kid> {
     return this.update(kid);
   }
 
-  createKid(kid: KidModel): Observable<KidModel> {
+  createKid(kid: Kid): Observable<Kid> {
     return this.create(kid);
   }
 
-  deleteKid(kid: KidModel): Observable<KidModel> {
+  deleteKid(kid: Kid): Observable<Kid> {
     return this.destroy(kid);
   }
 }

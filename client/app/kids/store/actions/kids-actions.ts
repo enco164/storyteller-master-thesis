@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {KidModel} from '../../models/kid';
+import {Kid} from '../../models/kid.model';
 import {Update} from '@ngrx/entity';
 
 export enum KidsActionTypes {
@@ -29,14 +29,14 @@ export enum KidsActionTypes {
 export class Create implements Action {
   type = KidsActionTypes.CREATE;
 
-  constructor(public payload = null) {
+  constructor(public payload: Kid) {
   }
 }
 
 export class CreateSuccess implements Action {
   type = KidsActionTypes.CREATE_SUCCESS;
 
-  constructor(public payload: KidModel) {
+  constructor(public payload: Kid) {
   }
 }
 
@@ -57,7 +57,7 @@ export class LoadAll implements Action {
 export class LoadAllSuccess implements Action {
   type = KidsActionTypes.LOAD_ALL_SUCCESS;
 
-  constructor(public payload: KidModel[]) {
+  constructor(public payload: Kid[]) {
   }
 }
 
@@ -78,7 +78,7 @@ export class Load implements Action {
 export class LoadSuccess implements Action {
   type = KidsActionTypes.LOAD_SUCCESS;
 
-  constructor(public payload: KidModel) {
+  constructor(public payload: Kid) {
   }
 }
 
@@ -92,14 +92,14 @@ export class LoadFail implements Action {
 export class Patch implements Action {
   type = KidsActionTypes.PATCH;
 
-  constructor(public payload: KidModel) {
+  constructor(public payload: Kid) {
   }
 }
 
 export class PatchSuccess implements Action {
   type = KidsActionTypes.PATCH_SUCCESS;
 
-  constructor(public payload: Update<KidModel>) {
+  constructor(public payload: Update<Kid>) {
   }
 }
 
@@ -113,7 +113,7 @@ export class PatchFail implements Action {
 export class Delete implements Action {
   type = KidsActionTypes.DELETE;
 
-  constructor(public payload: KidModel) {
+  constructor(public payload: Kid) {
   }
 }
 

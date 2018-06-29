@@ -18,7 +18,7 @@ class CreateKidsTable extends Migration
 
       $table->string('first_name');
       $table->string('last_name');
-      $table->date('year_of_birth')->nullable();
+      $table->integer('year_of_birth')->nullable();
       $table->string('city_of_birth')->nullable();
       $table->string('state_of_birth')->nullable();
       $table->char('gender', 1)->nullable();

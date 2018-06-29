@@ -6,7 +6,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CustomMaterialModule} from './custom-material.module';
 import {CoreModule} from './core/core.module';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './reducers';
@@ -27,8 +26,6 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-
-    CustomMaterialModule,
 
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),

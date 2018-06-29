@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 import {KidsRoutingModule} from './kids-routing.module';
 import {KidsIndexComponent} from './containers/kids-index/kids-index.component';
@@ -16,11 +15,13 @@ import {EffectsModule} from '@ngrx/effects';
 import {KidsListComponent} from './components/kids-list/kids-list.component';
 import {KidsEffects} from './store/effects/kids-effects';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
-import {CustomMaterialModule} from '../custom-material.module';
+import {CustomMaterialModule} from '../shared/custom-material.module';
+import {KidFormsService} from './services/kid-forms.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
 
     CustomMaterialModule,
 
@@ -35,6 +36,7 @@ import {CustomMaterialModule} from '../custom-material.module';
   providers: [
     KidsResource,
     KidExistsGuard,
+    KidFormsService,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
   ]
 })

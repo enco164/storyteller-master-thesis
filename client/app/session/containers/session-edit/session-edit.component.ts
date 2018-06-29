@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {Session} from '../../store/session.model';
 import {ActionsSubject, Store} from '@ngrx/store';
 import * as fromStore from '../../store';
@@ -7,7 +7,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LoadSession, SessionActionTypes, UpdateSessionSuccess} from '../../store/actions/session.actions';
 import {filter} from 'rxjs/operators';
 import {ofType} from '@ngrx/effects';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'st-session-edit',

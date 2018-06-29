@@ -20,39 +20,33 @@ import {
   PatchFail,
   PatchSuccess
 } from '../actions/kids-actions';
-import {catchError, map, switchMap} from 'rxjs/operators';
-import {KidModel} from '../../models/kid';
+import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
+import {Kid} from '../../models/kid.model';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class KidsEffects {
 
-  constructor(private actions$: Actions,
-              private kidResource: KidsResource) {
-  }
-
   @Effect()
   loadAll$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.LOAD_ALL),
-    switchMap(() =>
-      this.kidResource
-        .getKids().pipe(
-        map((kids: KidModel[]) => new LoadAllSuccess(kids)),
-        catchError((error) => of(new LoadAllFail(error)))
+    switchMap(() => this.kidResource.getKids().pipe
+      (
+        map((kids: Kid[]) => new LoadAllSuccess(kids)),
+        catchError((err) => of(new LoadAllFail(err)))
       )
     )
   );
-
   @Effect()
   load$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.LOAD),
     map((action: Load) => action.payload),
     switchMap((id) => this.kidResource
       .getKidById(id).pipe(
-        map((kid: KidModel) => new LoadSuccess(kid)),
+        map((kid: Kid) => new LoadSuccess(kid)),
         catchError((error) => of(new LoadFail(error)))
       ))
   );
-
   @Effect()
   create$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.CREATE),
@@ -60,20 +54,19 @@ export class KidsEffects {
     switchMap((kid) =>
       this.kidResource
         .createKid(kid).pipe(
-        map((createdContact: KidModel) => new CreateSuccess(createdContact)),
+        map((createdContact: Kid) => new CreateSuccess(createdContact)),
         catchError(err => of(new CreateFail(err)))
       )
     )
   );
-
   @Effect()
   patch$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.PATCH),
     map((action: Patch) => action.payload),
-    switchMap((kid: KidModel) =>
+    mergeMap((kid: Kid) =>
       this.kidResource
         .updateKid(kid).pipe(
-        map((updatedKid: KidModel) => new PatchSuccess({
+        map((updatedKid: Kid) => new PatchSuccess({
           id: updatedKid.id,
           changes: updatedKid
         })),
@@ -81,7 +74,6 @@ export class KidsEffects {
       )
     )
   );
-
   @Effect()
   destroy$: Observable<Action> = this.actions$.pipe(
     ofType(KidsActionTypes.DELETE),
@@ -94,16 +86,18 @@ export class KidsEffects {
       )
     )
   );
+  // @Effect()
+  // handleErrors$ = this.actions$.pipe(
+  //   ofType(
+  //     KidsActionTypes.LOAD_ALL_FAIL,
+  //     KidsActionTypes.LOAD_FAIL,
+  //     KidsActionTypes.CREATE_FAIL,
+  //     KidsActionTypes.PATCH_FAIL,
+  //     KidsActionTypes.DELETE_FAIL
+  //   ),
+  // );
 
-  @Effect()
-  handleErrors$ = this.actions$.pipe(
-    ofType(
-      KidsActionTypes.LOAD_ALL_FAIL,
-      KidsActionTypes.LOAD_FAIL,
-      KidsActionTypes.CREATE_FAIL,
-      KidsActionTypes.PATCH_FAIL,
-      KidsActionTypes.DELETE_FAIL
-    ),
-
-  );
+  constructor(private actions$: Actions,
+              private kidResource: KidsResource) {
+  }
 }

@@ -4,7 +4,7 @@ export namespace ChangeCase {
       return toCamelCase(obj);
     }
 
-    return changeKeys(toCamelCase, obj);
+    return changeKeys(toCamelCase, JSON.parse(JSON.stringify(obj)));
   }
 
   export function snakeCase(obj) {
@@ -12,7 +12,7 @@ export namespace ChangeCase {
       return toSnakeCase(obj);
     }
 
-    return changeKeys(toSnakeCase, obj);
+    return changeKeys(toSnakeCase, JSON.parse(JSON.stringify(obj)));
   }
 }
 

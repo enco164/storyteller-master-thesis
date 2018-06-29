@@ -1,12 +1,13 @@
 import * as moment from 'moment';
 import {BaseModel} from '../../core/models/base-model.model';
 
-export class KidModel extends BaseModel {
+export class Kid extends BaseModel {
   firstName: string;
   lastName: string;
-  yearOfBirth: moment.Moment;
+  yearOfBirth: number;
   cityOfBirth: string;
   stateOfBirth: string;
   educationMother: string;
   educationFather: string;
+  gender: string;
 }

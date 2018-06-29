@@ -2,13 +2,12 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActionsSubject, Store} from '@ngrx/store';
 import * as fromPictureBooks from '../../store';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import {PictureBook} from '../../models/picture-book.model';
-import {Subscription} from 'rxjs/Subscription';
 import {ofType} from '@ngrx/effects';
 import {Load, Patch, PatchSuccess, PictureBooksActionTypes} from '../../store/actions/picture-books-actions';
 import {filter} from 'rxjs/operators';
 import {PictureBookFormComponent} from '../../components/picture-book-form/picture-book-form.component';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'st-picture-book-edit',

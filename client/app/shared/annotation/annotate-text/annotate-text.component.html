@@ -1,0 +1,4 @@
+<p #container (textSelect)="onTextSelect($event)" [innerHTML]="content | safeHtml" stTextSelect>
+</p>
+<pre>{{annotations | json}}</pre>
+<pre>{{content | safeHtml}}</pre>

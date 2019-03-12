@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'picture-books', loadChildren: 'app/picture-books/picture-books.module#PictureBooksModule'},
   {path: 'media', loadChildren: 'app/media/media.module#MediaModule'},
   {path: 'sessions', loadChildren: 'app/session/session.module#SessionModule'},
+  {path: 'transcripts', loadChildren: 'app/transcript/transcript.module#TranscriptModule'},
   {path: '**', component: NotFoundComponent},
 ];
 

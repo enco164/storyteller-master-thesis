@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Media
+ * App\MediaController
  *
  * @property int $id
  * @property string $file_name
@@ -22,7 +22,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Media extends Model
 {
-  public function scenes() {
-    return $this->hasMany('App\Scene');
-  }
+
+    protected $fillable = [
+        'name', 'type'
+    ];
+
+    public function scenes()
+    {
+        return $this->hasMany('App\Scene');
+    }
 }

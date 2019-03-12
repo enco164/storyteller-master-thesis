@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  <mat-form-field>
+    <textarea formControlName="comment" matInput placeholder="Leave a comment"></textarea>
+  </mat-form-field>
+  <div style="display: flex; justify-content: end;">
+    <button (click)="onRemove()" mat-button type="button">remove</button>
+    <button (click)="onClose()" mat-button type="button">close</button>
+    <button [disabled]="!form.valid" color="primary" mat-button type="submit">save</button>
+  </div>
+</form>

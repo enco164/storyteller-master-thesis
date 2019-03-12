@@ -1,0 +1,7 @@
+<div>Proba Anotacije</div>
+<st-annotate-text
+    [text]="text"
+    [annotations]="annotations$ | async"
+    [popupComponent]="annotationPopupComponent"
+    (newAnnotation)="onNewAnnotation($event)"
+></st-annotate-text>

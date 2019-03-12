@@ -1,10 +1,12 @@
 import {
   MatButtonModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatTableModule,
@@ -23,10 +25,12 @@ const COMPONENTS = [
   MatFormFieldModule,
   MatInputModule,
   MatMomentDateModule,
+  MatDialogModule,
 
   CdkTableModule,
   MatTableModule,
   MatProgressSpinnerModule,
+  MatProgressBarModule,
   MatButtonModule,
   MatSelectModule,
 

@@ -1,0 +1,10 @@
+$st-popup-padding: 8px !default;
+
+:host {
+  display: block;
+  max-width: 300px;
+  min-width: 250px;
+  border-radius: 4px;
+  background-color: white;
+  padding: $st-popup-padding;
+}

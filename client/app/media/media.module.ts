@@ -4,10 +4,11 @@ import {MediaIndexComponent} from './containers/media-index/media-index.componen
 import {MediaRoutingModule} from './media-routing.module';
 import {MediaListComponent} from './components/media-list/media-list.component';
 import {MediaResource} from './services/media.resouce';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
 
     MediaRoutingModule
   ],

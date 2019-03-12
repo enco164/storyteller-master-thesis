@@ -14,12 +14,14 @@ import {SharedModule} from './shared/shared.module';
 import {CustomRouterStateSerializer} from './shared/custom-router-state-serializer';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {NavigationComponent} from './navigation/navigation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,

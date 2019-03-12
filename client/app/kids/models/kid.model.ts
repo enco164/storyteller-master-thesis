@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 import {BaseModel} from '../../core/models/base-model.model';
 
 export class Kid extends BaseModel {

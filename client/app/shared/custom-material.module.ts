@@ -5,8 +5,9 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatPaginatorModule,
   MatProgressSpinnerModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSortModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
@@ -26,6 +27,8 @@ const COMPONENTS = [
 
   CdkTableModule,
   MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
   MatProgressSpinnerModule,
   MatButtonModule,
   MatSelectModule,

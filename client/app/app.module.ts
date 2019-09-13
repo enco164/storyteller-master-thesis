@@ -4,9 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {NotFoundComponent} from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CoreModule} from './core/core.module';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './reducers';
 import {RouterStateSerializer} from '@ngrx/router-store';
@@ -19,12 +17,10 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
     SharedModule,
 
     StoreModule.forRoot(reducers),

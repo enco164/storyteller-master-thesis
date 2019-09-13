@@ -23,10 +23,6 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     SharedModule,
 
-    CustomMaterialModule,
-
-    FormsModule,
-
     StoreModule.forFeature('kids', fromKids.reducers),
     EffectsModule.forFeature([KidsEffects]),
 

@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://storyteller.test",
+    "target": "http://localhost",
     "secure": false
   }
 }
